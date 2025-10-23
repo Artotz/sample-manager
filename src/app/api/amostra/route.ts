@@ -4,7 +4,8 @@ import { cookies } from "next/headers"
 export async function GET(req: Request) {
   const url = new URL(req.url)
   const numero = url.searchParams.get("numero")
-  const token = cookies().get("s360_token")?.value
+  const cookieStore = await cookies()
+  const token = cookieStore.get("s360_token")?.value
   if (!token) return NextResponse.json({ error: "unauthenticated" }, { status: 401 })
   if (!numero) return NextResponse.json({ error: "missing_numero" }, { status: 400 })
 
@@ -15,4 +16,3 @@ export async function GET(req: Request) {
   const data = await upstream.json().catch(() => ({}))
   return NextResponse.json(data, { status: upstream.status || 200 })
 }
-
