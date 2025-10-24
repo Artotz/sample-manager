@@ -12,7 +12,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "next": "16.0.0",
-    "@zxing/browser": "^0.1.5"
+    "@ericblade/quagga2": "^1.3.7"
   },
   "devDependencies": {
     "typescript": "^5",
